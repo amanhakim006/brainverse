@@ -1,60 +1,217 @@
-/* ... (Baki CSS same rahega, bas niche wala part change hua hai) ... */
-:root { --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e); --glass-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1); --text-primary: #ffffff; --text-secondary: #b3b3b3; --accent: #d53369; --neon-blue: #00f2ff; }
+:root {
+    --bg-gradient: linear-gradient(135deg, #050505, #1a1a2e);
+    --glass-bg: rgba(20, 20, 20, 0.6); /* Thoda dark glass better contrast ke liye */
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent: #d53369;
+    --neon-blue: #00f2ff;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg-gradient); color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; height: 100vh; overflow: hidden; position: relative; }
+
+body {
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    height: 100vh;
+    overflow: hidden; /* Scroll band taaki app jaisa feel aaye */
+    position: relative;
+}
+
+/* Background & Nav (Same as before) */
 .glow-orb { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; opacity: 0.4; animation: floatOrb 10s infinite alternate; }
 .orb-1 { width: 300px; height: 300px; background: #da22ff; top: -50px; left: -50px; }
 .orb-2 { width: 400px; height: 400px; background: #9733ee; bottom: -100px; right: -100px; animation-delay: 2s; }
 @keyframes floatOrb { 0% { transform: translate(0, 0); } 100% { transform: translate(30px, 50px); } }
-nav { position: absolute; top: 0; left: 0; width: 100%; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+
+nav { position: absolute; top: 0; left: 0; width: 100%; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
 .logo { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 3px; text-transform: uppercase; }
-.logo .thin { font-weight: 400; opacity: 0.7; }
-.socials a { color: white; font-size: 18px; margin-left: 25px; opacity: 0.6; transition: 0.3s; }
-.socials a:hover { opacity: 1; transform: scale(1.1); color: var(--neon-blue); } /* Hover Effect Added */
+.thin { font-weight: 400; opacity: 0.7; }
+.socials a { color: white; font-size: 20px; margin-left: 20px; transition: 0.3s; }
+.socials a:hover { color: var(--neon-blue); transform: scale(1.1); }
 
-.main-gallery-container { height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 10; padding-top: 60px; }
-.section-title { text-align: center; font-family: 'Syncopate', sans-serif; letter-spacing: 4px; margin-bottom: 20px; background: linear-gradient(to right, var(--accent), var(--neon-blue)); -webkit-background-clip: text; color: transparent; }
-.mainSwiper { width: 100%; padding: 50px 0; overflow: visible; }
-.cover-slide { width: 300px; height: 450px; transition: all 0.4s ease; opacity: 0.5; transform: scale(0.9); cursor: pointer; }
-.swiper-slide-active.cover-slide { opacity: 1; transform: scale(1); z-index: 20; }
-.cover-card { width: 100%; height: 100%; background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 15px; display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); transition: 0.3s; }
-.cover-card:hover { border-color: var(--neon-blue); transform: translateY(-10px); }
-.cover-info h3 { font-family: 'Syncopate', sans-serif; font-size: 14px; margin-top: 15px; }
-.cover-info p { font-size: 12px; color: var(--text-secondary); margin-bottom: 15px; }
-.open-btn { background: linear-gradient(to right, var(--accent), var(--neon-blue)); border: none; color: white; padding: 10px; width: 100%; border-radius: 8px; font-weight: 700; cursor: pointer; }
-.collection-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); z-index: 200; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: 0.5s ease; }
-.collection-modal.active { opacity: 1; pointer-events: all; }
-.close-modal-btn { position: absolute; top: 30px; right: 50px; background: transparent; border: 1px solid white; color: white; padding: 10px 20px; border-radius: 30px; cursor: pointer; }
-.modal-content { width: 100%; height: 85%; } /* Increased height for better view */
-.detailSwiper { width: 100%; height: 100%; }
-.detail-slide { width: auto; /* Let image dictate width */ height: 100%; display: flex; justify-content: center; align-items: center; padding: 20px;}
-
-/* === UPDATED DETAIL CARD FOR ORIGINAL IMAGE RATIO === */
-.detail-card {
-    max-width: 90vw; /* Maximum width */
-    max-height: 80vh; /* Maximum height */
-    background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 15px;
-    display: flex; flex-direction: column; align-items: center;
+/* === MAIN GALLERY (COVERS) === */
+.main-gallery-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    padding-top: 40px;
 }
-/* Image container ab flexible hai */
-.detail-img-holder {
-    flex-grow: 1; /* Take available space */
-    display: flex; justify-content: center; align-items: center;
-    overflow: hidden; border-radius: 15px;
+
+.section-title {
+    text-align: center;
+    font-family: 'Syncopate', sans-serif;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    background: linear-gradient(to right, var(--accent), var(--neon-blue));
+    -webkit-background-clip: text; color: transparent;
+}
+
+/* Swiper Container */
+.mainSwiper {
+    width: 100%;
+    padding: 40px 0;
+    /* Overflow visible zaroori hai taaki 3D effect kate nahi */
+    overflow: visible; 
+}
+
+.cover-slide {
+    /* Fixed Size for Covers - Taaki layout toote nahi */
+    width: 280px; 
+    height: 400px; 
+    transition: all 0.4s ease;
+    /* Inactive slides thode chote aur dhundhle */
+    opacity: 0.4;
+    transform: scale(0.9);
+}
+
+.swiper-slide-active.cover-slide {
+    opacity: 1;
+    transform: scale(1.05); /* Zyada zoom nahi, bas thoda sa pop */
+    z-index: 20;
+}
+
+.cover-card {
+    width: 100%;
+    height: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.img-holder {
+    flex-grow: 1; /* Bachi hui jagah lega */
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-holder img {
+    width: 100%;
+    height: 100%;
+    /* IMP: Contain use kiya hai taaki puri photo dikhe, kate nahi */
+    object-fit: cover; 
+}
+
+.cover-info { margin-top: 15px; text-align: center; }
+.cover-info h3 { font-family: 'Syncopate', sans-serif; font-size: 14px; color: white; margin-bottom: 5px; }
+.cover-info p { font-size: 11px; color: var(--text-secondary); margin-bottom: 10px; }
+.open-btn {
+    background: linear-gradient(to right, var(--accent), var(--neon-blue));
+    border: none; color: white; padding: 8px 0; width: 100%;
+    border-radius: 6px; font-weight: 700; font-size: 10px; cursor: pointer;
+    font-family: 'Syncopate', sans-serif;
+}
+
+/* === MODAL (DETAIL VIEW) - Fixed Layout === */
+.collection-modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.96); /* Dark background focus ke liye */
+    z-index: 200;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    opacity: 0; pointer-events: none; transition: 0.3s ease;
+}
+.collection-modal.active { opacity: 1; pointer-events: all; }
+
+.close-modal-btn {
+    position: absolute; top: 20px; right: 20px; z-index: 210;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: white; padding: 8px 16px; border-radius: 30px; cursor: pointer;
+    font-family: 'Syncopate', sans-serif; font-size: 12px;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detailSwiper {
+    width: 100%;
+    height: 85vh; /* Screen ka 85% height */
+}
+
+/* Slide Styling inside Modal */
+.detail-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     width: 100%;
 }
-/* Image ab original ratio mein rahegi aur cut nahi hogi */
+
+/* Card jo Image hold karega - Ab Flexbox se center hoga */
+.detail-card {
+    width: 90%; /* Mobile par 90% width */
+    max-width: 1000px; /* PC par limit */
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Image Container - Flexible */
+.detail-img-holder {
+    width: 100%;
+    height: 100%; /* Pura space lega */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
 .detail-img-holder img {
-    max-width: 100%; max-height: 100%;
-    object-fit: contain; /* KEY CHANGE: Contains image within box without cropping */
-    border-radius: 15px;
+    max-width: 100%;
+    max-height: 70vh; /* Image height control taaki text ke liye jagah bache */
+    object-fit: contain; /* ASLI SIZE: Image kabhi nahi kategi */
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
 }
-.detail-info { width: 100%; margin-top: 15px; }
-.detail-info h3 { font-family: 'Syncopate', sans-serif; font-size: 14px; color: var(--neon-blue); margin-bottom: 5px;}
-/* Updated Prompt Box Style */
-.prompt-box { 
+
+.detail-info {
+    margin-top: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.detail-info h3 {
     font-family: 'Syncopate', sans-serif;
-    font-size: 12px; color: var(--text-secondary); font-weight: 700;
-    letter-spacing: 2px;
+    font-size: 16px; color: var(--neon-blue); margin-bottom: 5px;
 }
-.swiper-button-next, .swiper-button-prev { color: var(--neon-blue) !important; }
+
+.prompt-box {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px; color: #888; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: bold;
+}
+
+/* Navigation Buttons */
+.swiper-button-next, .swiper-button-prev {
+    color: var(--neon-blue) !important;
+    transform: scale(0.7); /* Buttons thode chote */
+}
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+    .cover-slide { width: 240px; height: 360px; }
+    .detail-img-holder img { max-height: 60vh; width: 100%; }
+    .section-title { font-size: 1rem; }
+}
