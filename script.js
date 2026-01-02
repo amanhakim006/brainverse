@@ -3,36 +3,38 @@ var swiper = new Swiper(".mySwiper", {
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: "auto",
+    initialSlide: 1, // Start from 2nd slide
     coverflowEffect: {
-        rotate: 30,
+        rotate: 0, // No rotation for cleaner look
         stretch: 0,
-        depth: 200,
-        modifier: 1,
-        slideShadows: true,
+        depth: 150, // Depth effect
+        modifier: 2.5,
+        slideShadows: false, // No harsh shadows
     },
-    loop: true,
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
     },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+    keyboard: {
+        enabled: true,
+    },
+    mousewheel: {
+        thresholdDelta: 70,
     },
 });
 
-// Copy Prompt Function
 function copyPrompt(btn) {
-    // Button ke upar wala text dhundo
     const text = btn.previousElementSibling.innerText;
-    
-    // Copy to clipboard
     navigator.clipboard.writeText(text).then(() => {
-        // Change button text temporarily
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        const originalText = btn.innerText;
+        btn.innerText = "COPIED!";
+        btn.style.background = "#fff";
+        btn.style.color = "#000";
+        
         setTimeout(() => {
-            btn.innerHTML = originalText;
+            btn.innerText = originalText;
+            btn.style.background = "transparent";
+            btn.style.color = "#fff";
         }, 2000);
     });
 }
