@@ -1,4 +1,4 @@
-// ================= DATA STORAGE (Prompts Removed) =================
+// ================= DATA STORAGE =================
 const collectionData = {
     'stranger-things-1': [
         { img: 'images/ST1.jpg', title: 'The Demogorgon' },
@@ -43,16 +43,31 @@ const collectionData = {
 
 // ================= LOGIC =================
 
+// Main Swiper (Covers)
 var mainSwiper = new Swiper(".mainSwiper", {
-    effect: "coverflow", grabCursor: true, centeredSlides: true, slidesPerView: "auto",
-    coverflowEffect: { rotate: 0, stretch: 0, depth: 150, modifier: 2.5, slideShadows: false },
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    coverflowEffect: {
+        rotate: 30, // Thoda rotation taaki 3D lage
+        stretch: 0,
+        depth: 200, // Depth badhai
+        modifier: 1, // SCALE FIX: Isko 1 kar diya (pehle 2.5 tha)
+        slideShadows: true,
+    },
 });
 
+// Detail Swiper (Andar wala) - Simple Slide effect for best view
 var detailSwiper = new Swiper(".detailSwiper", {
-    effect: "cards", grabCursor: true,
-    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    spaceBetween: 30,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
 });
 
+// Modal Logic
 const modal = document.getElementById('collectionModal');
 const detailWrapper = document.getElementById('detail-wrapper');
 const coverSlides = document.querySelectorAll('.cover-slide');
@@ -61,11 +76,13 @@ coverSlides.forEach(slide => {
     slide.addEventListener('click', function() {
         const collectionKey = this.getAttribute('data-collection');
         const data = collectionData[collectionKey];
+
         if (!data) return;
 
-        detailWrapper.innerHTML = '';
+        detailWrapper.innerHTML = ''; // Purana data clear
+
         data.forEach(item => {
-            // Updated HTML structure: Uses 'detail-img-holder' and fixed 'PROMPT' text
+            // Yahan humne structure simple rakha hai taaki CSS handle kare
             const slideHTML = `
                 <div class="swiper-slide detail-slide">
                     <div class="detail-card">
@@ -77,12 +94,16 @@ coverSlides.forEach(slide => {
                             <div class="prompt-box">PROMPT</div>
                         </div>
                     </div>
-                </div>`;
+                </div>
+            `;
             detailWrapper.insertAdjacentHTML('beforeend', slideHTML);
         });
 
+        // Swiper update karke pehli slide par le aao
         detailSwiper.update();
         detailSwiper.slideTo(0);
+        
+        // Modal dikhao
         modal.classList.add('active');
     });
 });
