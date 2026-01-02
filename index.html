@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brainverse | AI Art Gallery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
     <nav>
-        <div class="logo">BRAIN<span class="highlight">VERSE</span></div>
+        <div class="logo">BRAIN<span class="thin">VERSE</span></div>
         <div class="socials">
             <a href="https://twitter.com/AmanXDigital_" target="_blank"><i class="fab fa-twitter"></i></a>
             <a href="https://instagram.com/amanxdigital_" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -24,50 +31,48 @@
             <div class="swiper-wrapper" id="art-wrapper">
                 
                 <div class="swiper-slide">
-                    <div class="art-card">
-                        <img src="images/art1.jpg" onerror="this.src='https://via.placeholder.com/600x800/1a1a1a/00ffcc?text=Upload+Image'" alt="AI Art">
-                        <div class="overlay">
-                            <h3>Neon Samurai</h3>
-                            <p class="prompt-text">"Cyberpunk samurai standing in rain, neon lights reflection, futuristic tokyo background, cinematic lighting, 8k..."</p>
-                            <button class="copy-btn" onclick="copyPrompt(this)">
-                                <i class="fas fa-copy"></i> Copy Prompt
-                            </button>
+                    <div class="glass-card">
+                        <div class="img-holder">
+                            <img src="images/art1.jpg" onerror="this.src='https://via.placeholder.com/600x800/2a0845/ffffff?text=Art+1'" alt="AI Art">
+                        </div>
+                        <div class="info-box">
+                            <h3>Ethereal Nexus</h3>
+                            <p class="prompt-text">"Bioluminescent forest at night, glowing mushrooms, ethereal fog, purple and teal palette, dreamlike atmosphere, 8k render..."</p>
+                            <button class="copy-btn" onclick="copyPrompt(this)">COPY PROMPT</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="swiper-slide">
-                    <div class="art-card">
-                        <img src="images/art2.jpg" onerror="this.src='https://via.placeholder.com/600x800/1a1a1a/00ffcc?text=Upload+Image'" alt="AI Art">
-                        <div class="overlay">
-                            <h3>Cosmic Dreams</h3>
-                            <p class="prompt-text">"A floating city in space, nebula clouds background, starlight, surrealism, dreamlike atmosphere, pastel colors..."</p>
-                            <button class="copy-btn" onclick="copyPrompt(this)">
-                                <i class="fas fa-copy"></i> Copy Prompt
-                            </button>
+                    <div class="glass-card">
+                        <div class="img-holder">
+                            <img src="images/art2.jpg" onerror="this.src='https://via.placeholder.com/600x800/2a0845/ffffff?text=Art+2'" alt="AI Art">
+                        </div>
+                        <div class="info-box">
+                            <h3>Quantum Glitch</h3>
+                            <p class="prompt-text">"Cyberpunk android face glitching, datamoshing effect, chromatic aberration, white background, minimalist sci-fi..."</p>
+                            <button class="copy-btn" onclick="copyPrompt(this)">COPY PROMPT</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="swiper-slide">
-                    <div class="art-card">
-                        <img src="images/art3.jpg" onerror="this.src='https://via.placeholder.com/600x800/1a1a1a/00ffcc?text=Upload+Image'" alt="AI Art">
-                        <div class="overlay">
-                            <h3>Golden Skull</h3>
-                            <p class="prompt-text">"Gold and obsidian skull, melting liquid metal, intricate carvings, dark studio lighting, macro shot..."</p>
-                            <button class="copy-btn" onclick="copyPrompt(this)">
-                                <i class="fas fa-copy"></i> Copy Prompt
-                            </button>
+                    <div class="glass-card">
+                        <div class="img-holder">
+                            <img src="images/art3.jpg" onerror="this.src='https://via.placeholder.com/600x800/2a0845/ffffff?text=Art+3'" alt="AI Art">
+                        </div>
+                        <div class="info-box">
+                            <h3>Liquid Gold</h3>
+                            <p class="prompt-text">"Abstract flowing liquid gold, macro photography, depth of field, studio lighting, luxurious texture, black backdrop..."</p>
+                            <button class="copy-btn" onclick="copyPrompt(this)">COPY PROMPT</button>
                         </div>
                     </div>
                 </div>
 
             </div>
-            
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
         </div>
+        
+        <div class="swiper-pagination"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
