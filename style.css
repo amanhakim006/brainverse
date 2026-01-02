@@ -19,97 +19,52 @@ body {
     position: relative;
 }
 
-/* ... (Glow Orbs and Navbar CSS same as before - Purana wala hi rakhein) ... */
+/* Background Effects */
 .glow-orb { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; opacity: 0.4; animation: floatOrb 10s infinite alternate; }
 .orb-1 { width: 300px; height: 300px; background: #da22ff; top: -50px; left: -50px; }
 .orb-2 { width: 400px; height: 400px; background: #9733ee; bottom: -100px; right: -100px; animation-delay: 2s; }
 @keyframes floatOrb { 0% { transform: translate(0, 0); } 100% { transform: translate(30px, 50px); } }
+
+/* Navbar */
 nav { position: absolute; top: 0; left: 0; width: 100%; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
 .logo { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 3px; text-transform: uppercase; }
 .logo .thin { font-weight: 400; opacity: 0.7; }
 .socials a { color: white; font-size: 18px; margin-left: 25px; opacity: 0.6; transition: 0.3s; }
-.socials a:hover { opacity: 1; transform: scale(1.1); }
 
+/* Main Gallery */
+.main-gallery-container { height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 10; padding-top: 60px; }
+.section-title { text-align: center; font-family: 'Syncopate', sans-serif; letter-spacing: 4px; margin-bottom: 20px; background: linear-gradient(to right, var(--accent), var(--neon-blue)); -webkit-background-clip: text; color: transparent; }
 
-/* === MAIN GALLERY LAYOUT === */
-.main-gallery-container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 10;
-    padding-top: 60px;
-}
-
-.section-title {
-    text-align: center;
-    font-family: 'Syncopate', sans-serif;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
-    background: linear-gradient(to right, var(--accent), var(--neon-blue));
-    -webkit-background-clip: text;
-    text-transparent: auto;
-    color: transparent;
-}
-
-/* Main Swiper Styling */
 .mainSwiper { width: 100%; padding: 50px 0; overflow: visible; }
-.cover-slide { width: 300px; height: 450px; transition: all 0.4s ease; opacity: 0.5; transform: scale(0.9); cursor: pointer;}
+.cover-slide { width: 300px; height: 450px; transition: all 0.4s ease; opacity: 0.5; transform: scale(0.9); cursor: pointer; }
 .swiper-slide-active.cover-slide { opacity: 1; transform: scale(1); z-index: 20; }
 
-/* Cover Card Design */
 .cover-card {
-    width: 100%; height: 100%;
-    background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border); border-radius: 20px; padding: 15px;
-    display: flex; flex-direction: column;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); transition: 0.3s;
-}
-.cover-card:hover { border-color: var(--neon-blue); }
-.cover-info h3 { font-family: 'Syncopate', sans-serif; font-size: 16px; margin-top: 15px; }
-.cover-info p { font-size: 12px; color: var(--text-secondary); margin-bottom: 15px; }
-.open-btn {
-    background: linear-gradient(to right, var(--accent), var(--neon-blue)); border: none; color: white;
-    padding: 10px; width: 100%; border-radius: 8px; font-family: 'Syncopate', sans-serif; font-size: 10px; font-weight: 700; cursor: pointer;
-}
-
-/* === MODAL SYSTEM (The Hidden Layer) === */
-.collection-modal {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9); backdrop-filter: blur(20px);
-    z-index: 200;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    opacity: 0; pointer-events: none; transition: 0.5s ease; /* Initially Hidden */
-}
-.collection-modal.active { opacity: 1; pointer-events: all; } /* Show when active */
-
-.close-modal-btn {
-    position: absolute; top: 30px; right: 50px;
-    background: transparent; border: 1px solid white; color: white;
-    padding: 10px 20px; border-radius: 30px; font-family: 'Syncopate', sans-serif; cursor: pointer; transition: 0.3s;
-}
-.close-modal-btn:hover { background: white; color: black; }
-.modal-content { width: 100%; height: 70%; }
-
-/* Detail Swiper Styling (Inside Modal) */
-.detailSwiper { width: 100%; height: 100%; padding: 20px 0; }
-.detail-slide { width: 350px; height: 550px; } /* Bigger cards for details */
-
-/* Detail Card Design (Reusing glass style) */
-.detail-card {
     width: 100%; height: 100%; background: var(--glass-bg); backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border); border-radius: 20px; padding: 15px; display: flex; flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); transition: 0.3s;
 }
-.detail-info h3 { font-family: 'Syncopate', sans-serif; font-size: 14px; margin: 15px 0 10px; color: var(--neon-blue); }
-.prompt-box {
-    background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; font-size: 11px; color: #ccc;
-    max-height: 100px; overflow-y: auto; /* Scroll for long prompts */
-}
-/* Scrollbar styling for prompt box */
-.prompt-box::-webkit-scrollbar { width: 5px; }
-.prompt-box::-webkit-scrollbar-thumb { background: var(--neon-blue); border-radius: 10px; }
+.cover-card:hover { border-color: var(--neon-blue); transform: translateY(-10px); }
+.cover-info h3 { font-family: 'Syncopate', sans-serif; font-size: 14px; margin-top: 15px; }
+.cover-info p { font-size: 12px; color: var(--text-secondary); margin-bottom: 15px; }
+.open-btn { background: linear-gradient(to right, var(--accent), var(--neon-blue)); border: none; color: white; padding: 10px; width: 100%; border-radius: 8px; font-weight: 700; cursor: pointer; }
 
-.img-holder { width: 100%; height: 65%; border-radius: 15px; overflow: hidden; flex-shrink: 0;}
+/* Modal */
+.collection-modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(20px); z-index: 200; display: flex; justify-content: center; align-items: center;
+    opacity: 0; pointer-events: none; transition: 0.5s ease;
+}
+.collection-modal.active { opacity: 1; pointer-events: all; }
+.close-modal-btn { position: absolute; top: 30px; right: 50px; background: transparent; border: 1px solid white; color: white; padding: 10px 20px; border-radius: 30px; cursor: pointer; }
+.modal-content { width: 100%; height: 80%; }
+.detailSwiper { width: 100%; height: 100%; }
+.detail-slide { width: 320px; height: 500px; display: flex; justify-content: center; align-items: center; }
+
+.detail-card {
+    width: 100%; height: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 15px; display: flex; flex-direction: column;
+}
+.img-holder { width: 100%; height: 70%; border-radius: 15px; overflow: hidden; }
 .img-holder img { width: 100%; height: 100%; object-fit: cover; }
+.prompt-box { margin-top: 10px; font-size: 11px; color: #ccc; max-height: 80px; overflow-y: auto; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 5px; }
 .swiper-button-next, .swiper-button-prev { color: var(--neon-blue) !important; }
