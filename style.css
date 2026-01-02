@@ -1,0 +1,120 @@
+:root {
+    --bg-color: #050505;
+    --card-bg: #101010;
+    --accent: #00f2ff; /* Neon Cyan */
+    --text: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    overflow: hidden; /* Hide scrollbars for gallery feel */
+    height: 100vh;
+}
+
+/* Navbar */
+nav {
+    position: absolute;
+    top: 0; left: 0; width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.logo { font-family: 'Orbitron', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; }
+.highlight { color: var(--accent); text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
+.socials a { color: gray; font-size: 20px; margin-left: 20px; transition: 0.3s; }
+.socials a:hover { color: var(--accent); }
+
+/* Gallery Container */
+.gallery-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, rgba(0, 242, 255, 0.05) 0%, #050505 70%);
+}
+
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px; /* Card Width */
+    height: 450px; /* Card Height */
+    border-radius: 15px;
+    filter: blur(2px) grayscale(0.5); /* Inactive slides look dull */
+    transition: all 0.5s ease;
+    transform: scale(0.9);
+}
+
+.swiper-slide-active {
+    filter: blur(0) grayscale(0); /* Active slide pops up */
+    transform: scale(1.1);
+    z-index: 10;
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+}
+
+/* Art Card Styling */
+.art-card {
+    position: relative;
+    width: 100%; height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.art-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+/* Hover Overlay */
+.overlay {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    transform: translateY(100%);
+    transition: 0.3s ease;
+    backdrop-filter: blur(5px);
+    border-top: 1px solid var(--accent);
+}
+
+.swiper-slide-active .art-card:hover .overlay {
+    transform: translateY(0); /* Show text on hover */
+}
+
+.overlay h3 { font-family: 'Orbitron', sans-serif; color: var(--accent); margin-bottom: 5px; }
+.prompt-text { font-size: 14px; color: #ccc; margin-bottom: 15px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Copy Button */
+.copy-btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'Orbitron', sans-serif;
+    transition: 0.3s;
+}
+.copy-btn:hover { background: var(--accent); color: black; }
+
+/* Navigation */
+.swiper-button-next, .swiper-button-prev { color: var(--accent) !important; }
+.swiper-pagination-bullet-active { background: var(--accent) !important; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .swiper-slide { width: 250px; height: 380px; }
+}
