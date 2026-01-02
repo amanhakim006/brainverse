@@ -1,70 +1,60 @@
-:root {
-    --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --text-primary: #ffffff;
-    --text-secondary: #b3b3b3;
-    --accent: #d53369;
-    --neon-blue: #00f2ff;
-}
-
+/* ... (Baki CSS same rahega, bas niche wala part change hua hai) ... */
+:root { --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e); --glass-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1); --text-primary: #ffffff; --text-secondary: #b3b3b3; --accent: #d53369; --neon-blue: #00f2ff; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    background: var(--bg-gradient);
-    color: var(--text-primary);
-    font-family: 'Space Grotesk', sans-serif;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-}
-
-/* Background Effects */
+body { background: var(--bg-gradient); color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; height: 100vh; overflow: hidden; position: relative; }
 .glow-orb { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; opacity: 0.4; animation: floatOrb 10s infinite alternate; }
 .orb-1 { width: 300px; height: 300px; background: #da22ff; top: -50px; left: -50px; }
 .orb-2 { width: 400px; height: 400px; background: #9733ee; bottom: -100px; right: -100px; animation-delay: 2s; }
 @keyframes floatOrb { 0% { transform: translate(0, 0); } 100% { transform: translate(30px, 50px); } }
-
-/* Navbar */
 nav { position: absolute; top: 0; left: 0; width: 100%; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
 .logo { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 3px; text-transform: uppercase; }
 .logo .thin { font-weight: 400; opacity: 0.7; }
 .socials a { color: white; font-size: 18px; margin-left: 25px; opacity: 0.6; transition: 0.3s; }
+.socials a:hover { opacity: 1; transform: scale(1.1); color: var(--neon-blue); } /* Hover Effect Added */
 
-/* Main Gallery */
 .main-gallery-container { height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 10; padding-top: 60px; }
 .section-title { text-align: center; font-family: 'Syncopate', sans-serif; letter-spacing: 4px; margin-bottom: 20px; background: linear-gradient(to right, var(--accent), var(--neon-blue)); -webkit-background-clip: text; color: transparent; }
-
 .mainSwiper { width: 100%; padding: 50px 0; overflow: visible; }
 .cover-slide { width: 300px; height: 450px; transition: all 0.4s ease; opacity: 0.5; transform: scale(0.9); cursor: pointer; }
 .swiper-slide-active.cover-slide { opacity: 1; transform: scale(1); z-index: 20; }
-
-.cover-card {
-    width: 100%; height: 100%; background: var(--glass-bg); backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border); border-radius: 20px; padding: 15px; display: flex; flex-direction: column;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); transition: 0.3s;
-}
+.cover-card { width: 100%; height: 100%; background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 15px; display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); transition: 0.3s; }
 .cover-card:hover { border-color: var(--neon-blue); transform: translateY(-10px); }
 .cover-info h3 { font-family: 'Syncopate', sans-serif; font-size: 14px; margin-top: 15px; }
 .cover-info p { font-size: 12px; color: var(--text-secondary); margin-bottom: 15px; }
 .open-btn { background: linear-gradient(to right, var(--accent), var(--neon-blue)); border: none; color: white; padding: 10px; width: 100%; border-radius: 8px; font-weight: 700; cursor: pointer; }
-
-/* Modal */
-.collection-modal {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95);
-    backdrop-filter: blur(20px); z-index: 200; display: flex; justify-content: center; align-items: center;
-    opacity: 0; pointer-events: none; transition: 0.5s ease;
-}
+.collection-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); z-index: 200; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: 0.5s ease; }
 .collection-modal.active { opacity: 1; pointer-events: all; }
 .close-modal-btn { position: absolute; top: 30px; right: 50px; background: transparent; border: 1px solid white; color: white; padding: 10px 20px; border-radius: 30px; cursor: pointer; }
-.modal-content { width: 100%; height: 80%; }
+.modal-content { width: 100%; height: 85%; } /* Increased height for better view */
 .detailSwiper { width: 100%; height: 100%; }
-.detail-slide { width: 320px; height: 500px; display: flex; justify-content: center; align-items: center; }
+.detail-slide { width: auto; /* Let image dictate width */ height: 100%; display: flex; justify-content: center; align-items: center; padding: 20px;}
 
+/* === UPDATED DETAIL CARD FOR ORIGINAL IMAGE RATIO === */
 .detail-card {
-    width: 100%; height: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 15px; display: flex; flex-direction: column;
+    max-width: 90vw; /* Maximum width */
+    max-height: 80vh; /* Maximum height */
+    background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 15px;
+    display: flex; flex-direction: column; align-items: center;
 }
-.img-holder { width: 100%; height: 70%; border-radius: 15px; overflow: hidden; }
-.img-holder img { width: 100%; height: 100%; object-fit: cover; }
-.prompt-box { margin-top: 10px; font-size: 11px; color: #ccc; max-height: 80px; overflow-y: auto; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 5px; }
+/* Image container ab flexible hai */
+.detail-img-holder {
+    flex-grow: 1; /* Take available space */
+    display: flex; justify-content: center; align-items: center;
+    overflow: hidden; border-radius: 15px;
+    width: 100%;
+}
+/* Image ab original ratio mein rahegi aur cut nahi hogi */
+.detail-img-holder img {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain; /* KEY CHANGE: Contains image within box without cropping */
+    border-radius: 15px;
+}
+.detail-info { width: 100%; margin-top: 15px; }
+.detail-info h3 { font-family: 'Syncopate', sans-serif; font-size: 14px; color: var(--neon-blue); margin-bottom: 5px;}
+/* Updated Prompt Box Style */
+.prompt-box { 
+    font-family: 'Syncopate', sans-serif;
+    font-size: 12px; color: var(--text-secondary); font-weight: 700;
+    letter-spacing: 2px;
+}
 .swiper-button-next, .swiper-button-prev { color: var(--neon-blue) !important; }
